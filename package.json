@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "devDependencies": {
+    "nuxt": "3.0.0-rc.1",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0"
+  },
+  "dependencies": {
+    "@emotionagency/smoothscroll": "^1.0.1",
+    "@emotionagency/utils": "^1.0.0",
+    "@pinia/nuxt": "^0.1.8",
+    "gsap": "^3.10.3",
+    "pinia": "^2.0.13",
+    "supports-webp": "^2.0.1"
+  }
+}

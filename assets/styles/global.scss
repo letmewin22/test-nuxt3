@@ -1,0 +1,33 @@
+* {
+  &::selection {
+    color: white;
+    background: #ece5df;
+  }
+}
+
+html {
+  height: 100vh;
+  height: var(--vh);
+  font-size: vw(16);
+}
+
+body {
+  color: var(--black);
+  font-size: 1rem;
+  height: 100vh;
+  height: var(--vh);
+  position: relative;
+  overscroll-behavior-y: none;
+  @include smooth-font;
+  @media (min-width: 1060px) {
+    overflow: hidden;
+  }
+
+  @media (max-width: $br1) {
+    font-size: 16px;
+  }
+}
+
+.e-fixed {
+  overflow: hidden !important;
+}

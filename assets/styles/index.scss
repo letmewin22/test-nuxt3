@@ -1,0 +1,68 @@
+@import './helpers/all.scss';
+// @import './layout.scss';
+// @import './global.scss';
+@import './components/all.scss';
+
+.todo-app {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.todo-checked {
+  span {
+    text-decoration: line-through;
+  }
+  opacity: 0.5;
+}
+
+.check-btn,
+.remove-btn {
+  background-color: transparent;
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+}
+
+.todo-list-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check-btn {
+  svg {
+    fill: green;
+  }
+}
+
+.remove-btn {
+  svg {
+    fill: red;
+  }
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.check-btn,
+.remove-btn {
+  border: none;
+}

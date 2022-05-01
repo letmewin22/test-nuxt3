@@ -1,0 +1,38 @@
+@use 'sass:math';
+
+@function em($size, $context: 16) {
+  @return (math.div($size, $context)) * 1em;
+}
+
+@mixin smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin smooth-font {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@function size($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $maxWidth - $minWidth;
+  @return calc(
+    #{$mobSize + px} + #{$addSize} *
+      ((100vw - #{$minWidth + px}) / #{$maxWidth})
+  );
+}
+
+@function vw($px, $screen: 1920) {
+  $inVW: math.div($px, $screen) * 100;
+  @return #{$inVW}vw;
+}
+
+@function vh($px, $screen: 1080) {
+  $inVH: math.div($px, $screen) * 100;
+  @return #{$inVH}vh;
+}
+
+@function toimg($width, $height) {
+  $resolution: (math.div($height, $width)) * 100;
+  @return #{$resolution + '%'};
+}
