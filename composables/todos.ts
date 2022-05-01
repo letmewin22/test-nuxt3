@@ -1,11 +1,19 @@
-import {ITodo} from '~~/types/todo'
+import { ITodo } from '~~/types/todo'
 
-type TFunc = (inputValue?: {value: string}) => any
+type FuncReturn = {
+  todos: { value: ITodo[] }
+  addTodo: () => void
+  onCheckTodo: (id: number) => void
+  onRemoveTodo: (id: number) => void
+  fetchTodos: () => Promise<ITodo[]>
+}
+
+type TFunc = (inputValue?: { value: string }) => FuncReturn
 
 export const useTodos: TFunc = inputValue => {
-  const todos = ref<ITodo[]>([])
+  const todos = useState<ITodo[]>('todos', () => [])
 
-  const fetchTodos = async () => {
+  const fetchTodos = (): Promise<ITodo[]> => {
     return new Promise(resolve => {
       $fetch('https://jsonplaceholder.typicode.com/todos').then(resolve)
     })
@@ -29,7 +37,7 @@ export const useTodos: TFunc = inputValue => {
   const onCheckTodo = (id: number): void => {
     todos.value = todos.value.map(todo => {
       if (todo.id === id) {
-        return {...todo, completed: !todo.completed}
+        return { ...todo, completed: !todo.completed }
       }
       return todo
     })
@@ -39,5 +47,5 @@ export const useTodos: TFunc = inputValue => {
     todos.value = todos.value.filter(todo => todo.id !== id)
   }
 
-  return {todos, addTodo, onCheckTodo, onRemoveTodo, fetchTodos}
+  return { todos, addTodo, onCheckTodo, onRemoveTodo, fetchTodos }
 }

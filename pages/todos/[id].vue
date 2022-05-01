@@ -1,19 +1,18 @@
 <script setup lang="ts">
-const route = useRoute();
-const { todos, fetchTodos, onCheckTodo, onRemoveTodo } = useTodos();
-const todo = ref({});
-const pageId = +route.params.id;
+const route = useRoute()
+const { todos, fetchTodos, onCheckTodo, onRemoveTodo } = useTodos()
+const todo = useState('todo', () => ({}))
+const pageId = +route.params.id
 
 watch(todos, () => {
-  todo.value = todos.value.find((todo) => todo.id === pageId);
-  console.log(todo);
-});
+  todo.value = todos.value.find(todo => todo.id === pageId)
+})
 
 onMounted(async () => {
-  const fetchedTodos = await fetchTodos();
-  todos.value = fetchedTodos;
-  todo.value = fetchedTodos.find((todo) => todo.id === pageId);
-});
+  const fetchedTodos = await fetchTodos()
+  todos.value = fetchedTodos
+  todo.value = fetchedTodos.find(todo => todo.id === pageId)
+})
 </script>
 
 

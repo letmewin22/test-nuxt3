@@ -1,9 +1,9 @@
 <script setup lang="ts">
 onMounted(async () => {
-  const { SmoothScroll } = await import("@emotionagency/smoothscroll");
-  const { raf } = await import("@emotionagency/utils");
+  const { SmoothScroll } = await import('@emotionagency/smoothscroll')
+  const { raf } = await import('@emotionagency/utils')
 
-  (<any>window).ss = new SmoothScroll({
+  window.ss = new SmoothScroll({
     el: document.documentElement,
     mobile: false,
     breakpoint: 1060,
@@ -14,8 +14,8 @@ onMounted(async () => {
     scrollbar: true,
     useKeyboard: false,
     raf,
-  });
-});
+  })
+})
 </script>
 
 <template>

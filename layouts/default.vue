@@ -1,29 +1,26 @@
 <script setup lang="ts">
 onMounted(async () => {
-  const { default: supportsWebP } = await import("supports-webp");
+  // const { default: supportsWebP } = await import('supports-webp')
 
   // if (await supportsWebP) {
   //   this.$store.commit("app/setIsWebp", true);
   // } else {
   //   this.$store.commit("app/setIsWebp", false);
   // }
-  const { hello } = await import("~/assets/scripts/utils/hello");
-  hello();
+  const { hello } = await import('~/assets/scripts/utils/hello')
+  hello()
 
-  const { winSizes } = await import("~/assets/scripts/utils/winSizes");
-  const { resize } = await import("@emotionagency/utils");
-  resize.on(winSizes);
+  const { winSizes } = await import('~/assets/scripts/utils/winSizes')
+  const { resize } = await import('@emotionagency/utils')
+  resize.on(winSizes)
 
   // const { default: NavbarPos } = await import(
   //   "~/assets/scripts/utils/navbarPos"
   // );
   // this.navbarPos = new NavbarPos();
   // this.navbarPos.init();
-});
+})
 </script>
-
-
-
 
 <template>
   <Head>

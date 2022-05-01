@@ -17,7 +17,7 @@ export default {
   mounted() {
     document.addEventListener('keypress', this.toggleView)
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('keypress', this.toggleView)
   },
   methods: {
