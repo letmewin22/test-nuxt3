@@ -10,9 +10,7 @@ const { todos, addTodo, onCheckTodo, onRemoveTodo, fetchTodos } =
 
 onMounted(async () => {
   isLoading.value = true
-  const fetchedTodos = await fetchTodos()
-
-  todos.value = fetchedTodos
+  await fetchTodos()
   isLoading.value = false
 })
 

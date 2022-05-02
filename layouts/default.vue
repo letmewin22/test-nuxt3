@@ -1,24 +1,21 @@
 <script setup lang="ts">
-onMounted(async () => {
-  // const { default: supportsWebP } = await import('supports-webp')
+import { useAppStore } from '~/store/app'
 
-  // if (await supportsWebP) {
-  //   this.$store.commit("app/setIsWebp", true);
-  // } else {
-  //   this.$store.commit("app/setIsWebp", false);
-  // }
+const appStore = useAppStore()
+onMounted(async () => {
+  const { default: supportsWebP } = await import('supports-webp')
+
+  if (await supportsWebP) {
+    appStore.setIsWebp(true)
+  } else {
+    appStore.setIsWebp(false)
+  }
   const { hello } = await import('~/assets/scripts/utils/hello')
   hello()
 
   const { winSizes } = await import('~/assets/scripts/utils/winSizes')
   const { resize } = await import('@emotionagency/utils')
   resize.on(winSizes)
-
-  // const { default: NavbarPos } = await import(
-  //   "~/assets/scripts/utils/navbarPos"
-  // );
-  // this.navbarPos = new NavbarPos();
-  // this.navbarPos.init();
 })
 </script>
 
@@ -32,7 +29,6 @@ onMounted(async () => {
         crossorigin="anonymous"
       />
     </Head>
-
     <slot />
   </div>
 </template>

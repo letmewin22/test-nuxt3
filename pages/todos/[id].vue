@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { useTodosStore } from '~/store/todos'
+const isLoading = ref<boolean>(true)
 
 const route = useRoute()
 const todosStore = useTodosStore()
@@ -8,8 +9,10 @@ const { onCheckTodo, onRemoveTodo, fetchTodos } = useTodos()
 
 const pageId = +route.params.id
 
-onMounted(() => {
-  fetchTodos()
+onMounted(async () => {
+  isLoading.value = true
+  await fetchTodos()
+  isLoading.value = false
 })
 
 const todo = computed(() => {

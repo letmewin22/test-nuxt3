@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ITodo } from '~~/types/todo'
 
 interface ITodosState {
-  todos: ITodo[] | undefined[]
+  todos: ITodo[]
 }
 
 const state = (): ITodosState => ({
@@ -11,9 +11,8 @@ const state = (): ITodosState => ({
 
 const actions = {
   async fetchTodos() {
-    const todos: ITodo[] = await $fetch(
-      'https://jsonplaceholder.typicode.com/todos'
-    )
+    const URL = 'https://jsonplaceholder.typicode.com/todos'
+    const todos: ITodo[] = await $fetch(URL)
     this.todos = [...todos, ...this.todos]
   },
   addTodo(title: string) {
@@ -33,7 +32,8 @@ const actions = {
     })
   },
   removeTodo(id: number) {
-    this.todos = this.todos.filter(todo => todo.id !== id)
+    const todos: ITodo[] = this.todos
+    this.todos = todos.filter(todo => todo.id !== id)
   },
 }
 
