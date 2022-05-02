@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ITodo } from "~~/types/todo";
+import { ITodo } from '~~/types/todo'
 
 interface IProps {
-  todo: ITodo;
+  todo: ITodo
 }
 
-const props = defineProps<IProps>();
-const emit = defineEmits(["checkTodo", "removeTodo"]);
+const props = defineProps<IProps>()
+const emit = defineEmits(['checkTodo', 'removeTodo'])
 
 const onCheck = (): void => {
-  emit("checkTodo", props.todo.id);
-};
+  emit('checkTodo', props.todo.id)
+}
 
 const removeTodo = (): void => {
-  emit("removeTodo", props.todo.id);
-};
+  emit('removeTodo', props.todo.id)
+}
 </script>
 
 <template>
